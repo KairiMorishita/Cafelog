@@ -49,7 +49,6 @@ class User < ApplicationRecord
   # 有効化用のメールを送信する
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
-    update_columns(reset_digest:  FILL_IN, reset_sent_at: FILL_IN)
   end
 
   # パスワード再設定の属性を設定する
