@@ -2,7 +2,7 @@ Cafe.create!(name:  "Morishiterbacks Cofee",
              image: "",
              address: "東京都渋谷区",
              phone_number: "000-1234-5678",
-             email: "morishiterbacks@sample.com",
+             email: "morishiterbacks@example.com",
              credit: true,
              parking: false)
 
@@ -11,7 +11,7 @@ Cafe.create!(name:  "Morishiterbacks Cofee",
   image = "image",
   address = "address",
   phone_number = "phone_number",
-  email = "morishiterbacks#{n+1}@sample.com",
+  email = "morishiterbacks#{n+1}@example.com",
   credit = "credit",
   parking = "parking",
 Cafe.create!(name:  name,
@@ -24,7 +24,7 @@ Cafe.create!(name:  name,
 end
 
 User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
+             email: "example@morishiterbacks.org",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: true,
@@ -33,7 +33,7 @@ User.create!(name:  "Example User",
 
 99.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
+  email = "example-#{n+1}@morishiterbacks.org"
   password = "password"
   User.create!(name:  name,
                email: email,

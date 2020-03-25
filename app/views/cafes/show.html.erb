@@ -4,7 +4,9 @@
       <h1>
         <%= @cafe.name %>
       </h1>
-      <img src = "https://sustainablejapan.jp/wp-content/uploads/2018/06/starbucks.jpg" >
+      <div class="cafeimg">
+        <img src = "https://sustainablejapan.jp/wp-content/uploads/2018/06/starbucks.jpg" >
+      </div>
       <h2>店舗基本情報</h2>
       <table>
         <tr>
@@ -40,4 +42,10 @@
           </td>
         </tr>
       </table>
+      
+    <% if !Favorite.exists?(user_id:current_user.id,cafe_id:@cafe.id) %>
+      <%= link_to "お気に入り",cafe_favorite_path(@cafe),method: :post %>
+    <% else %>
+      <%= link_to "お気に入り解除",cafe_favorite_path(@cafe),method: :delete %>
+    <% end %>
 </div>

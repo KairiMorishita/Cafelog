@@ -12,8 +12,6 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
   end
   
-  
-  
   # 永続セッションとしてユーザーを記憶する
   def remember(user)
     user.remember

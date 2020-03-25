@@ -1,8 +1,3 @@
-<h1>All cafes</h1>
-
-<%= will_paginate %>
-
-<ul class="cafes">
   <% @cafes.each do |cafe| %>
     <li>
       <strong><%= link_to cafe.name, cafe %></strong><br>
@@ -24,9 +19,6 @@
       <% else %>
       無し
       <% end %>
+      
     </li>
   <% end %>
-
-</ul>
-
-<%= will_paginate %>

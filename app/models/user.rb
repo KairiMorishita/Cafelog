@@ -9,6 +9,9 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 },allow_nil:true
+
+  has_many :favorites
+  has_many :fav_cafes, through: :favorites
   
 # 渡された文字列のハッシュ値を返す
   def User.digest(string)
@@ -79,5 +82,16 @@ class User < ApplicationRecord
   def create_activation_digest
     self.activation_token  = User.new_token
     self.activation_digest = User.digest(activation_token)
+  end
+  
+  #お気に入り機能
+  def like(cafe)
+    favorites.find_or_create_by(cafe_id: cafe.id)
+  end
+  
+  #お気に入り削除機能
+  def unlike(cafe)
+    favorite = favorites.find_by(cafe_id: cafe.id)
+    favorite.destroy if favorite
   end
 end
