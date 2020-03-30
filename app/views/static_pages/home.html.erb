@@ -2,19 +2,35 @@
   <div class="row">
     <aside class="col-md-4">
       <section class="user_info">
-        <%# render 'shared/user_info' %>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
       </section>
     </aside>
+    <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @cafes.any? %>
+      <ul class="cafes favorite">
+        <%= render @cafes %>
+      </ul>
+      <%= will_paginate @cafes %>
+    <% end %>
+  </div>
   </div>
 <% else %>
   <div class="center jumbotron">
-    <h1>Welcome to the Cafelog</h1>
+    <h1>カフェ探しはカフェログで</h1>
 
     <h2>
-      This is the home page for the
-      Cafelog application.
+      カフェログへようこそ
+      あなたにピッタリのカフェをお探しします
     </h2>
 
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to "ゲストユーザーはこちら", signup_path, class: "btn btn-lg btn-primary" %><br><br>
+    <%= link_to "会員登録", signup_path, class: "btn btn-lg btn-primary" %>
   </div>
 <% end %>

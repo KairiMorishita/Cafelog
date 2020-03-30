@@ -23,7 +23,7 @@ Cafe.create!(name:  name,
            parking: parking)
 end
 
-User.create!(name:  "Example User",
+User.create!(name:"Example User",
              email: "example@morishiterbacks.org",
              password:              "foobar",
              password_confirmation: "foobar",
@@ -31,7 +31,7 @@ User.create!(name:  "Example User",
              activated: true,
              activated_at: Time.zone.now)
 
-99.times do |n|
+10.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@morishiterbacks.org"
   password = "password"
@@ -42,3 +42,8 @@ User.create!(name:  "Example User",
                activated: true,
                activated_at: Time.zone.now)
 end
+
+# リレーションシップ
+cafes = Cafe.all
+user = User.first
+cafes[2..50].each { |cafe| user.favorite(cafe) }

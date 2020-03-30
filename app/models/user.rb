@@ -11,8 +11,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 },allow_nil:true
 
   has_many :favorites
-  has_many :fav_cafes, through: :favorites
-  
+  has_many :fav_cafes, through: :favorites, source: :cafe
+
 # 渡された文字列のハッシュ値を返す
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -71,6 +71,23 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
   
+
+    #お気に入り機能
+  def favorite(cafe)
+    favorites.find_or_create_by(cafe_id: cafe.id)
+  end
+
+  #お気に入り削除機能
+  def unfavorite(cafe)
+    favorite = favorites.find_by(cafe_id: cafe.id)
+    favorite.destroy if favorite
+  end
+
+  # 現在のユーザーがお気に入りにしてたらtrueを返す
+  def favorite?(cafe)
+    favorite.include?(cafe)
+  end
+
   private
   
   # メールアドレスをすべて小文字にする
@@ -84,14 +101,4 @@ class User < ApplicationRecord
     self.activation_digest = User.digest(activation_token)
   end
   
-  #お気に入り機能
-  def like(cafe)
-    favorites.find_or_create_by(cafe_id: cafe.id)
-  end
-  
-  #お気に入り削除機能
-  def unlike(cafe)
-    favorite = favorites.find_by(cafe_id: cafe.id)
-    favorite.destroy if favorite
-  end
 end

@@ -7,6 +7,16 @@
         <%= @user.name %>
       </h1>
     </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+      <% if @cafes.any? %>
+        <div class="cafe_img">
+          <% @cafes.each do |cafe| %>
+            <img src = "https://sustainablejapan.jp/wp-content/uploads/2018/06/starbucks.jpg" ><br>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
   </aside>
   <div class="col-md-8">
     <h3><%= @title %></h3>
@@ -14,7 +24,7 @@
       <ul class="cafes favorite">
         <%= render @cafes %>
       </ul>
-      <%= will_paginate @cafes %>
+      <%= will_paginate %>
     <% end %>
   </div>
 </div>

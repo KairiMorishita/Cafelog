@@ -9,6 +9,6 @@ class CafesController < ApplicationController
   
   def favorite
     @user = current_user
-    @cafes = @user.hoge.paginate(page: params[:page])
+    @cafes = @user.fav_cafes.paginate(page: params[:page])
   end
 end
