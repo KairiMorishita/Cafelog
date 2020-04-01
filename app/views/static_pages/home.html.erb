@@ -30,7 +30,7 @@
       あなたにピッタリのカフェをお探しします
     </h2>
 
-    <%= link_to "ゲストユーザーはこちら", signin_path(session: {email: 'test@test.com', password: 'test'}), class: "btn btn-lg btn-primary" %><br><br>
+    <%= link_to "ゲストユーザーはこちら", signup_path(session: {email: 'test@test.com', password: 'test'}), class: "btn btn-lg btn-primary" %><br><br>
     <%= link_to "会員登録", signup_path, class: "btn btn-lg btn-primary" %>
   </div>
 <% end %>
