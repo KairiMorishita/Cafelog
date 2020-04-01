@@ -1,9 +1,9 @@
 <% @user ||= current_user %>
 <div class="stats">
-  <a href="<%= favorites_user_path(@user) %>">
+  <p>
     <strong id="favorite" class="stat">
       <%= @user.fav_cafes.count %>
     </strong>
     お気に入りカフェ
-  </a>
+  </p>
 </div>
