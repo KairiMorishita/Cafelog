@@ -1,32 +1,30 @@
 <h1>カフェ一覧</h1>
 
 <%= will_paginate %>
-
 <ul class="cafes">
   <% @cafes.each do |cafe| %>
-    <li>
-      <strong><%= link_to cafe.name, cafe %></strong><br>
-      <img src = "https://sustainablejapan.jp/wp-content/uploads/2018/06/starbucks.jpg" ><br>
-      住所：<%= cafe.address %><br>
-      電話番号：<%= cafe.phone_number %><br>
-      メールアドレス：<%= cafe.email %><br>
-      
-      クレジットカード：
-      <% if cafe.credit == true %>
-      利用可
-      <% else %>
-      現金のみ
-      <% end %><br>
-      
-      駐車場：
-      <% if cafe.parking == true %>
-      有り
-      <% else %>
-      無し
-      <% end %>
-    </li>
+  
+      <li>
+        <h5 class="mt-0"><%= link_to cafe.name, cafe %></h5><br>
+        <img src = "https://sustainablejapan.jp/wp-content/uploads/2018/06/starbucks.jpg" ><br>
+        住所：<%= cafe.address %><br>
+        電話番号：<%= cafe.phone_number %><br>
+        メールアドレス：<%= cafe.email %><br>
+        
+        クレジットカード：
+        <% if cafe.credit == true %>
+        利用可
+        <% else %>
+        現金のみ
+        <% end %><br>
+        
+        駐車場：
+        <% if cafe.parking == true %>
+        有り
+        <% else %>
+        無し
+        <% end %>
+      </li>
   <% end %>
-
 </ul>
-
 <%= will_paginate %>
