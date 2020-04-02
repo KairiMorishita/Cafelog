@@ -1,53 +1,52 @@
 <div class="row">
   <aside class="col-md-4">
-    <section class="cafe_info">
-      <h1 class="h1">
-        <%= @cafe.name %>
-      </h1>
-      <div class="cafeimg">
-        <img src = "https://sustainablejapan.jp/wp-content/uploads/2018/06/starbucks.jpg" class="rounded float-left" >
-      </div>
-      <h2 class="h2">店舗基本情報</h2>
-      <table class="table table-borderless">
-        <tr>
-          <th>住所</th>
-          <td><%= @cafe.address %></td>
-        </tr>
-        <tr>
-          <th>電話番号</th>
-          <td><%= @cafe.phone_number %></td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <td><%= @cafe.email %></td>
-        </tr>
-        <tr>
-          <th>クレジットカード</th>
-          <td>
-             <% if @cafe.credit == true %>
-             利用可
-             <% else %>
-             現金のみ
-             <% end %>
-          </td>
-        </tr>
-        <tr>
-          <th>駐車場</th>
-          <td>
-            <% if @cafe.parking == true %>
-            有り
-            <% else %>
-            無し
-            <% end %>
-          </td>
-        </tr>
-      </table>
-      
-  <div class="fav_btn">    
-    <% if !Favorite.exists?(user_id:current_user.id,cafe_id:@cafe.id) %>
-      <%= link_to "お気に入り一覧に入れる",cafe_favorite_path(@cafe),method: :post %>
-    <% else %>
-      <%= link_to "お気に入り解除",cafe_favorite_path(@cafe),method: :delete %>
-    <% end %>
-  </div>
+    <h1 class="h1">
+      <%= @cafe.name %>
+    </h1>
+    <div class="cafeimg">
+      <img src = "https://sustainablejapan.jp/wp-content/uploads/2018/06/starbucks.jpg" class="rounded float-left" >
+    </div>
+    <h2 class="h2">店舗基本情報</h2>
+    <table class="table table-borderless">
+      <tr>
+        <th>住所</th>
+        <td><%= @cafe.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @cafe.phone_number %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @cafe.email %></td>
+      </tr>
+      <tr>
+        <th>クレジットカード</th>
+        <td>
+           <% if @cafe.credit == true %>
+           利用可
+           <% else %>
+           現金のみ
+           <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>駐車場</th>
+        <td>
+          <% if @cafe.parking == true %>
+          有り
+          <% else %>
+          無し
+          <% end %>
+        </td>
+      </tr>
+    </table>
+    <div class="fav_btn">    
+      <% if !Favorite.exists?(user_id:current_user.id,cafe_id:@cafe.id) %>
+        <%= link_to "お気に入り一覧に入れる",cafe_favorite_path(@cafe),method: :post %>
+      <% else %>
+        <%= link_to "お気に入り解除",cafe_favorite_path(@cafe),method: :delete %>
+      <% end %>
+    </div>
+  </aside>
 </div>
